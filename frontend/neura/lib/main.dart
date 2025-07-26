@@ -1,38 +1,48 @@
-// lib/main.dart
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:neura/screens/home_screen.dart';
-import 'package:neura/screens/splash_screen.dart';
-import 'package:neura/screens/login_screen.dart';
- // Import login screen
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'features/welcome/ui/welcome_page.dart';
+import 'features/home/ui/home_page.dart';
+import 'features/auth/ui/login_page.dart';
+import 'features/auth/ui/signup_page.dart';
+import 'theme/app_theme.dart';
+import 'features/device/device_auth.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
-    runApp(const MyApp());
-  });
+  runApp(const ProviderScope(child: VoiceAssistantApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class VoiceAssistantApp extends StatelessWidget {
+  const VoiceAssistantApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Neura - AI Assistant',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Inter',
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      title: 'PersonaFlex',
       debugShowCheckedModeBanner: false,
 
-      initialRoute: '/',
+      // Light theme (not used, but required for fallback)
+      theme: ThemeData(
+      brightness: Brightness.light,
+      colorScheme: ColorScheme.light(
+        primary: Colors.deepPurple,
+      ),
+      useMaterial3: true,
+    ),
+
+      // Dark theme from theme/app_theme.dart
+      darkTheme: darkAppTheme,
+      themeMode: ThemeMode.dark, // Force dark mode for now
+
+      // Routing
+      initialRoute: '/welcome',
       routes: {
-        '/': (context) => const SplashScreen(),
-        '/login': (context) => const LoginScreen(), // Add login route
-        '/home': (context) => const HomeScreen(),
+        '/welcome': (context) => const WelcomePage(),
+        '/home': (context) => const HomePage(),
+        '/login': (context) => const LoginPage(),
+        '/signup': (context) => const SignupPage(),
+        '/device-auth': (context) => const DeviceAuthPage(),
+        // TODO: Add additional routes here
       },
     );
   }
