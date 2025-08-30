@@ -1,0 +1,33 @@
+[00:00:15] **Speaker 1:** Hello, everyone. Thanks for joining today's meeting. We're here to discuss the Q3 performance and the strategy for the next quarter.
+
+[00:00:30] **Speaker 2:** I can start with the Q3 results. Our team saw a 15% increase in user engagement, largely due to the new onboarding flow we implemented. However, the retention rate for new users dropped by 5%. We need to analyze that data.
+
+[00:01:10] **Speaker 1:** Good to hear about the engagement boost. Regarding retention, what are your thoughts? Is it related to the new features, or perhaps a bug we haven't identified yet?
+
+[00:01:45] **Speaker 3:** From the feedback we've gathered, it seems some users are confused by the new dashboard layout. The "elaborate" button is not clearly labeled, and the "related links" section is difficult to find. We're considering a UI redesign to make it more intuitive.
+
+[00:02:15] **Speaker 1:** That's a great point. Let's schedule a separate meeting with the UI/UX team to go over the dashboard. We should also investigate if the API calls are causing any latency, which could be affecting the user experience.
+
+[00:02:40] **Speaker 2:** I've already pulled the performance logs. The Gemini API calls for summarization are taking around 2 seconds, which is within our acceptable range. The main bottleneck seems to be the initial file parsing on the client side.
+
+[00:03:10] **Speaker 1:** Okay, so we'll have two action items. First, a UI redesign meeting. Second, the tech team will look into optimizing the file parsing. Let's aim to have an initial plan by the end of the week.
+
+[00:03:30] **Speaker 3:** And I'll put together a list of related links and tutorials on UI best practices to share with the team.
+
+[00:03:45] **Speaker 1:** Perfect. Thanks, everyone. Meeting adjourned.
+
+---
+
+[00:04:00] **Speaker 4:** Excuse me, can I add something? I just received some new data from the marketing team. They've found that users who interact with the "elaborate" button tend to have a 10% higher session duration. This indicates that once they find the feature, it's very useful to them.
+
+[00:04:30] **Speaker 1:** That's a critical piece of information. It reinforces the need for a more intuitive UI. The value is there, we just need to improve the discoverability. Let's make sure the UI/UX team gets this data before their meeting.
+
+[00:04:50] **Speaker 2:** On the tech side, I've looked into the client-side parsing. The current method is a synchronous call that's blocking the main thread. We can switch to an asynchronous approach using `compute` to offload the work to a separate isolate, which should eliminate the lag.
+
+[00:05:20] **Speaker 1:** That sounds like a solid plan. What's the timeline for that? Can we get a quick prototype ready for the UI/UX team to test?
+
+[00:05:35] **Speaker 2:** A prototype for the asynchronous parsing can be ready by tomorrow afternoon. I'll get started on that right away.
+
+[00:06:00] **Speaker 3:** I've also found a few open-source libraries that could help with the "related links" feature. They use a simple algorithm to find similar topics, which could be a good starting point before we integrate with a more sophisticated backend.
+
+[00:06:30] **Speaker 1:** Excellent. This is all great progress. So, to recap, the UI/UX meeting is confirmed, the tech team is working on the async parsing, and Speaker 3 is exploring link generation libraries. We'll touch base again at the end of the week. Thanks again, everyone.
